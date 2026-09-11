@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Eye, Activity, Clock, DollarSign, AlertTriangle, CheckCircle } from 'lucide-react';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar } from 'recharts';
 

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Brain, Database, Eye, Shield, Zap, Users, 
   Workflow, Search, Settings, Server, GitBranch,
@@ -109,52 +108,36 @@ export default function App() {
       </button>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            className="lg:hidden fixed inset-0 z-40 bg-gray-950/95 p-4 pt-16"
-          >
-            <div className="space-y-1">
-              {sections.map((section) => {
-                const Icon = section.icon;
-                const isActive = activeSection === section.id;
-                return (
-                  <button
-                    key={section.id}
-                    onClick={() => { setActiveSection(section.id); setMobileMenuOpen(false); }}
-                    className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all ${
-                      isActive 
-                        ? 'bg-violet-500/20 text-violet-300' 
-                        : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
-                    }`}
-                  >
-                    <Icon className="w-4 h-4" />
-                    <span>{section.label}</span>
-                  </button>
-                );
-              })}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {mobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 z-40 bg-gray-950/95 p-4 pt-16 animate-fade-in">
+          <div className="space-y-1">
+            {sections.map((section) => {
+              const Icon = section.icon;
+              const isActive = activeSection === section.id;
+              return (
+                <button
+                  key={section.id}
+                  onClick={() => { setActiveSection(section.id); setMobileMenuOpen(false); }}
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all ${
+                    isActive 
+                      ? 'bg-violet-500/20 text-violet-300' 
+                      : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800/50'
+                  }`}
+                >
+                  <Icon className="w-4 h-4" />
+                  <span>{section.label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Main Content */}
       <main className="flex-1 lg:ml-64 overflow-y-auto">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeSection}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="p-4 lg:p-8"
-          >
-            {renderSection()}
-          </motion.div>
-        </AnimatePresence>
+        <div key={activeSection} className="p-4 lg:p-8 animate-fade-in-up">
+          {renderSection()}
+        </div>
       </main>
     </div>
   );

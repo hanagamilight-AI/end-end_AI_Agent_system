@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Brain, Cpu, Gauge, Zap } from 'lucide-react';
 
 const models = [
@@ -136,20 +135,16 @@ export default function ModelOptimization() {
               <div className="w-28 text-sm text-gray-300">{item.model}</div>
               <div className="flex-1 flex gap-1">
                 <div className="flex-1 h-6 bg-gray-800 rounded overflow-hidden relative">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${item.cost}%` }}
-                    transition={{ duration: 0.8 }}
-                    className="h-full bg-gradient-to-r from-orange-500 to-red-500 rounded"
+                  <div
+                    className="h-full bg-gradient-to-r from-orange-500 to-red-500 rounded bar-animate"
+                    style={{ width: `${item.cost}%` }}
                   />
                   <span className="absolute inset-0 flex items-center px-2 text-xs text-white font-mono">${item.cost}/M</span>
                 </div>
                 <div className="flex-1 h-6 bg-gray-800 rounded overflow-hidden relative">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={{ width: `${item.quality}%` }}
-                    transition={{ duration: 0.8 }}
-                    className="h-full bg-gradient-to-r from-green-500 to-emerald-500 rounded"
+                  <div
+                    className="h-full bg-gradient-to-r from-green-500 to-emerald-500 rounded bar-animate"
+                    style={{ width: `${item.quality}%` }}
                   />
                   <span className="absolute inset-0 flex items-center px-2 text-xs text-white font-mono">{item.quality}%</span>
                 </div>

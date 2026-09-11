@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Server, Globe, Lock, Layers, Code } from 'lucide-react';
 
 const endpoints = [
@@ -85,7 +84,7 @@ export default function BackendAPIs() {
 
       {/* Endpoints */}
       {activeTab === 'endpoints' && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+        <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 animate-fade-in">
           <h3 className="text-lg font-semibold text-gray-200 mb-4">REST API Endpoints</h3>
           <div className="space-y-2">
             {endpoints.map((ep) => (
@@ -104,12 +103,12 @@ export default function BackendAPIs() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       )}
 
       {/* Architecture */}
       {activeTab === 'architecture' && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+        <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 animate-fade-in">
           <h3 className="text-lg font-semibold text-gray-200 mb-4">System Architecture Layers</h3>
           <div className="space-y-3">
             {architectureLayers.map((layer, i) => (
@@ -132,12 +131,12 @@ export default function BackendAPIs() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       )}
 
       {/* Code Example */}
       {activeTab === 'code' && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
+        <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 animate-fade-in">
           <h3 className="text-lg font-semibold text-gray-200 mb-4">API Implementation Example</h3>
           <pre className="text-xs text-gray-300 font-mono bg-gray-950 rounded-lg p-4 overflow-x-auto leading-relaxed">
 {`from fastapi import FastAPI, Depends, HTTPException
@@ -182,7 +181,7 @@ async def chat_completions(
         usage=result.usage
     )`}
           </pre>
-        </motion.div>
+        </div>
       )}
     </div>
   );

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { GitBranch, Layers, Filter, ArrowRight, Check, X } from 'lucide-react';
 
 const strategies = [
@@ -85,11 +84,10 @@ export default function ContextEngineering() {
       {/* Strategies Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
         {strategies.map((strategy, index) => (
-          <motion.button
+          <button
             key={strategy.id}
             onClick={() => setActiveStrategy(index)}
-            whileHover={{ scale: 1.01 }}
-            className={`text-left p-5 rounded-xl border transition-all ${
+            className={`text-left p-5 rounded-xl border transition-all hover:scale-[1.01] ${
               activeStrategy === index
                 ? 'bg-gray-800/80 border-emerald-500/50'
                 : 'bg-gray-900/50 border-gray-800 hover:border-gray-700'
@@ -108,7 +106,7 @@ export default function ContextEngineering() {
               ))}
             </div>
             <div className="text-xs text-emerald-400 font-medium">{strategy.impact}</div>
-          </motion.button>
+          </button>
         ))}
       </div>
 
@@ -179,11 +177,9 @@ export default function ContextEngineering() {
             <div key={item.label} className="flex items-center gap-4">
               <div className="w-40 text-sm text-gray-300">{item.label}</div>
               <div className="flex-1 h-4 bg-gray-800 rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${item.percent}%` }}
-                  transition={{ duration: 0.8 }}
-                  className={`h-full rounded-full ${item.color}`}
+                <div
+                  className={`h-full rounded-full ${item.color} bar-animate`}
+                  style={{ width: `${item.percent}%` }}
                 />
               </div>
               <div className="w-20 text-xs text-gray-400 text-right font-mono">{item.tokens} tokens</div>

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Settings, Plug, Code, ArrowRight, Terminal, CheckCircle } from 'lucide-react';
 
 const mcpServers = [
@@ -121,7 +120,7 @@ export default function MCPTools() {
 
       {/* Servers Tab */}
       {activeTab === 'servers' && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-3">
+        <div className="space-y-3 animate-fade-in">
           {mcpServers.map((server) => (
             <div key={server.name} className="flex items-center justify-between p-4 bg-gray-900/50 border border-gray-800 rounded-xl">
               <div className="flex items-center gap-3">
@@ -142,12 +141,12 @@ export default function MCPTools() {
               </div>
             </div>
           ))}
-        </motion.div>
+        </div>
       )}
 
       {/* Protocol Tab */}
       {activeTab === 'protocol' && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-4">
+        <div className="space-y-4 animate-fade-in">
           <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
             <h3 className="text-lg font-semibold text-gray-200 mb-4">MCP Tool Definition</h3>
             <pre className="text-xs text-green-300 font-mono bg-gray-950 rounded-lg p-4 overflow-x-auto">
@@ -180,12 +179,12 @@ export default function MCPTools() {
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
       )}
 
       {/* Execution Tab */}
       {activeTab === 'execution' && (
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+        <div className="animate-fade-in">
           <div className="bg-gray-900/50 border border-gray-800 rounded-xl p-6">
             <h3 className="text-lg font-semibold text-gray-200 mb-4">Tool Execution Log</h3>
             <div className="space-y-3">
@@ -208,7 +207,7 @@ export default function MCPTools() {
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
       )}
     </div>
   );

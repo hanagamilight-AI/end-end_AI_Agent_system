@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Database, Table, Key, Link } from 'lucide-react';
 
 const tables = [
@@ -102,11 +101,9 @@ export default function DatabaseDesign() {
         <h3 className="text-lg font-semibold text-gray-200 mb-4">Core Schema</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {tables.map((table) => (
-            <motion.div
+            <div
               key={table.name}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="bg-gray-800/50 rounded-lg border border-gray-700 overflow-hidden"
+              className="bg-gray-800/50 rounded-lg border border-gray-700 overflow-hidden animate-fade-in-up"
             >
               <div className="px-4 py-2 bg-gray-800 border-b border-gray-700 flex items-center gap-2">
                 <Table className="w-4 h-4 text-teal-400" />
@@ -123,7 +120,7 @@ export default function DatabaseDesign() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

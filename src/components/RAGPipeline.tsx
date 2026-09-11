@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Search, FileText, Layers, ArrowRight, CheckCircle, BarChart3 } from 'lucide-react';
 
 const pipelineStages = [
@@ -118,11 +117,9 @@ export default function RAGPipeline() {
         </div>
 
         {/* Active Stage Detail */}
-        <motion.div
+        <div
           key={activeStage}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-gray-800/50 rounded-lg p-4 border border-gray-700"
+          className="bg-gray-800/50 rounded-lg p-4 border border-gray-700 animate-fade-in-up"
         >
           <div className="flex items-center gap-2 mb-2">
             <span className="text-xl">{pipelineStages[activeStage].icon}</span>
@@ -137,7 +134,7 @@ export default function RAGPipeline() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Interactive Search Demo */}
@@ -162,23 +159,17 @@ export default function RAGPipeline() {
         </div>
         
         {results && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="space-y-2"
-          >
+          <div className="space-y-2 animate-fade-in">
             {results.map((result, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, x: -10 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="p-3 bg-gray-800/50 border border-gray-700 rounded-lg"
+                className="p-3 bg-gray-800/50 border border-gray-700 rounded-lg animate-slide-in-left"
+                style={{ animationDelay: `${i * 0.1}s` }}
               >
                 <p className="text-sm text-gray-300 font-mono">{result}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         )}
       </div>
 
@@ -193,13 +184,11 @@ export default function RAGPipeline() {
             <div key={metric.name} className="flex items-center gap-4">
               <div className="w-32 text-sm text-gray-300">{metric.name}</div>
               <div className="flex-1 h-3 bg-gray-800 rounded-full overflow-hidden">
-                <motion.div
-                  initial={{ width: 0 }}
-                  animate={{ width: `${metric.score * 100}%` }}
-                  transition={{ duration: 1, delay: 0.2 }}
-                  className={`h-full rounded-full ${
+                <div
+                  className={`h-full rounded-full bar-animate ${
                     metric.score >= 0.9 ? 'bg-green-500' : metric.score >= 0.8 ? 'bg-yellow-500' : 'bg-red-500'
                   }`}
+                  style={{ width: `${metric.score * 100}%` }}
                 />
               </div>
               <div className="w-12 text-sm font-mono text-gray-300 text-right">{(metric.score * 100).toFixed(0)}%</div>

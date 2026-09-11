@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Workflow, Brain, MemoryStick, Wrench, ArrowRight, Play, RotateCcw } from 'lucide-react';
 
 const agentSteps = [
@@ -92,13 +91,15 @@ export default function AgenticAISystem() {
             const isActive = currentStep === index;
             const isCompleted = completedSteps.includes(index);
             return (
-              <motion.div
+              <div
                 key={step.id}
-                animate={{ 
-                  scale: isActive ? 1.02 : 1,
-                  borderColor: isActive ? 'rgb(139, 92, 246)' : isCompleted ? 'rgb(34, 197, 94)' : 'rgb(55, 65, 81)'
-                }}
-                className={`p-4 rounded-lg border ${isActive ? 'bg-violet-500/10' : isCompleted ? 'bg-green-500/5' : 'bg-gray-800/50'} transition-all`}
+                className={`p-4 rounded-lg border transition-all duration-300 ${
+                  isActive 
+                    ? 'bg-violet-500/10 border-violet-500 scale-[1.02]' 
+                    : isCompleted 
+                      ? 'bg-green-500/5 border-green-500' 
+                      : 'bg-gray-800/50 border-gray-700'
+                }`}
               >
                 <div className="flex items-center gap-2 mb-2">
                   <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
@@ -112,7 +113,7 @@ export default function AgenticAISystem() {
                   )}
                 </div>
                 <p className="text-xs text-gray-400">{step.description}</p>
-              </motion.div>
+              </div>
             );
           })}
         </div>

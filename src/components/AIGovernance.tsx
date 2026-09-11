@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Shield, Lock, Eye, FileText, AlertTriangle, CheckCircle, Users, Scale } from 'lucide-react';
 
 const governancePillars = [
@@ -103,11 +102,9 @@ export default function AIGovernance() {
           </div>
         </div>
         <div className="mt-4 h-3 bg-gray-700 rounded-full overflow-hidden">
-          <motion.div
-            initial={{ width: 0 }}
-            animate={{ width: '94%' }}
-            transition={{ duration: 1 }}
-            className="h-full bg-gradient-to-r from-green-500 to-emerald-400 rounded-full"
+          <div
+            className="h-full bg-gradient-to-r from-green-500 to-emerald-400 rounded-full bar-animate"
+            style={{ width: '94%' }}
           />
         </div>
       </div>
@@ -139,11 +136,9 @@ export default function AIGovernance() {
       </div>
 
       {/* Active Pillar Details */}
-      <motion.div
+      <div
         key={activePillar}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-6"
+        className="bg-gray-900/50 border border-gray-800 rounded-xl p-6 mb-6 animate-fade-in-up"
       >
         <h3 className="text-lg font-semibold text-gray-200 mb-4">
           {governancePillars[activePillar].name} Controls
@@ -156,7 +151,7 @@ export default function AIGovernance() {
             </div>
           ))}
         </div>
-      </motion.div>
+      </div>
 
       {/* Compliance & Risk */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">

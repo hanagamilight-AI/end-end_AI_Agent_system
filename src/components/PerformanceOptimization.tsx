@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Zap, Clock, DollarSign, Server, TrendingDown, ArrowDown, ArrowRight } from 'lucide-react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 

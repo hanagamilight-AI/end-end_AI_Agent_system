@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { 
   Brain, Search, GitBranch, Settings, Server, 
   Database, Eye, Shield, Zap, Users, Workflow,
@@ -37,44 +36,38 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex items-center gap-2 mb-4">
-              <Sparkles className="w-5 h-5 text-yellow-400" />
-              <span className="text-sm text-gray-400 uppercase tracking-wider">Production-Grade AI Platform</span>
-            </div>
-            <h1 className="text-4xl lg:text-6xl font-bold mb-4">
-              <span className="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
-                Agentic AI
-              </span>
-              <br />
-              <span className="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">
-                Engineering Platform
-              </span>
-            </h1>
-            <p className="text-lg text-gray-400 max-w-2xl mb-6">
-              A comprehensive platform for designing, building, and operating production-grade 
-              AI systems — from agentic workflows and RAG pipelines to observability and governance.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <button 
-                onClick={() => onNavigate('agentic')}
-                className="px-5 py-2.5 bg-gradient-to-r from-violet-600 to-purple-600 rounded-lg text-sm font-medium hover:from-violet-500 hover:to-purple-500 transition-all flex items-center gap-2"
-              >
-                Explore Platform <ArrowRight className="w-4 h-4" />
-              </button>
-              <button 
-                onClick={() => onNavigate('observability')}
-                className="px-5 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:bg-gray-700 transition-all"
-              >
-                View Metrics
-              </button>
-            </div>
-          </motion.div>
+        <div className="relative z-10 animate-fade-in-up">
+          <div className="flex items-center gap-2 mb-4">
+            <Sparkles className="w-5 h-5 text-yellow-400" />
+            <span className="text-sm text-gray-400 uppercase tracking-wider">Production-Grade AI Platform</span>
+          </div>
+          <h1 className="text-4xl lg:text-6xl font-bold mb-4">
+            <span className="bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent">
+              Agentic AI
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent">
+              Engineering Platform
+            </span>
+          </h1>
+          <p className="text-lg text-gray-400 max-w-2xl mb-6">
+            A comprehensive platform for designing, building, and operating production-grade 
+            AI systems — from agentic workflows and RAG pipelines to observability and governance.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <button 
+              onClick={() => onNavigate('agentic')}
+              className="px-5 py-2.5 bg-gradient-to-r from-violet-600 to-purple-600 rounded-lg text-sm font-medium hover:from-violet-500 hover:to-purple-500 transition-all flex items-center gap-2"
+            >
+              Explore Platform <ArrowRight className="w-4 h-4" />
+            </button>
+            <button 
+              onClick={() => onNavigate('observability')}
+              className="px-5 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-sm font-medium hover:bg-gray-700 transition-all"
+            >
+              View Metrics
+            </button>
+          </div>
         </div>
       </div>
 
@@ -86,17 +79,14 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
           { label: 'Avg Latency', value: '142ms', change: '-18% optimized' },
           { label: 'Models Deployed', value: '8', change: '3 quantized' },
         ].map((stat, i) => (
-          <motion.div
+          <div
             key={stat.label}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1 }}
-            className="bg-gray-900/50 border border-gray-800 rounded-xl p-4"
+            className={`bg-gray-900/50 border border-gray-800 rounded-xl p-4 animate-fade-in-up stagger-${i + 1}`}
           >
             <div className="text-2xl font-bold text-white">{stat.value}</div>
             <div className="text-sm text-gray-400">{stat.label}</div>
             <div className="text-xs text-green-400 mt-1">{stat.change}</div>
-          </motion.div>
+          </div>
         ))}
       </div>
 
@@ -107,13 +97,10 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
           {capabilities.map((cap, i) => {
             const Icon = cap.icon;
             return (
-              <motion.button
+              <button
                 key={cap.label}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.05 }}
                 onClick={() => onNavigate(sectionIds[i])}
-                className="group flex items-center gap-3 p-4 bg-gray-900/50 border border-gray-800 rounded-xl hover:border-gray-600 transition-all text-left"
+                className={`group flex items-center gap-3 p-4 bg-gray-900/50 border border-gray-800 rounded-xl hover:border-gray-600 transition-all text-left animate-scale-in stagger-${i + 1}`}
               >
                 <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${cap.color} flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform`}>
                   <Icon className="w-5 h-5 text-white" />
@@ -122,7 +109,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
                   <div className="text-sm font-medium text-gray-200">{cap.label}</div>
                   <div className="text-xs text-gray-500">Click to explore →</div>
                 </div>
-              </motion.button>
+              </button>
             );
           })}
         </div>

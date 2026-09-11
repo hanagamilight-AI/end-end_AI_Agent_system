@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { Users, GitBranch, Rocket, CheckCircle, Clock, ArrowRight, MessageSquare, Target } from 'lucide-react';
 
 const pipelineStages = [
