@@ -58,12 +58,9 @@ export default function Collaboration() {
         
         <div className="space-y-3">
           {pipelineStages.map((stage, index) => (
-            <motion.div
+            <div
               key={stage.stage}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
-              className={`p-4 rounded-lg border ${
+              className={`p-4 rounded-lg border animate-fade-in-up stagger-${index + 1} ${
                 stage.status === 'complete' ? 'bg-green-500/5 border-green-500/20' :
                 stage.status === 'active' ? 'bg-fuchsia-500/5 border-fuchsia-500/30' :
                 'bg-gray-800/30 border-gray-700'
@@ -100,7 +97,7 @@ export default function Collaboration() {
                   </span>
                 ))}
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
